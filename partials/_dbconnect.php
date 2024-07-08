@@ -3,5 +3,5 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "querynest";
+$database = "forumify";
 $conn = mysqli_connect($servername, $username, $password, $database);

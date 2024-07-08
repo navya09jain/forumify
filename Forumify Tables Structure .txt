@@ -1,0 +1,28 @@
+Forumify Tables Structure 
+
+categories -> 4 rows
+1. category_id [int(8), auto increment(primary key)]
+2. category_name [varchar(255)]
+3. category_description [varchar(1000)]
+4. created [datetime, current_timestamp() (which is in default)]
+
+comment -> 5 rows
+1. Comment_id [int(8), auto increment(primary key)]
+2. comment_content [text]
+3. thread_id [int(8)]
+4. comment_by [varchar(255)]
+5. comment_time [datetime, current_timestamp() (which is in default)]
+
+threads->6 rows
+1. thread_id [int(8), auto increment(primary key)]
+2. thread_title [varchar(255)]
+3. thread_desc [text]
+4. thread_cat_id [int(8)]
+5. thread_user_id [int(7)]
+6. timestamp [datetime, current_timestamp() (which is in default)]
+
+users->4 rows
+1. sno [int(8), auto increment(primary key)]
+2. user_email [varchar(30)]
+3. user_pass [varchar(255)]
+4. timestamp [datetime, current_timestamp() (which is in default)]

@@ -28,12 +28,11 @@
                 $categoryDesc = $row['category_description'];
                 echo '<div class="col my-2 text-center mx-auto">
                     <div class="card" style="width: 18rem;">
-                        <img src="https:source.unsplash.com/500x400/?coding,' . $categoryName . '" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
                             <a href="/forum/threadList.php?catid=' . $categoryId . '&category=' . $categoryName . '">' . $categoryName . '</a>
                             </h5>
-                            <p class="card-text">' . substr($categoryDesc, 0, 150) . ' <strong>...</strong></p>
+                            <p class="card-text">' . $categoryDesc. ' </p>
                             <a href="/forum/threadList.php?catid=' . $categoryId . '&category=' . $categoryName . '" class="btn btn-primary">View Threads</a>
                         </div>
                     </div>

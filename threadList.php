@@ -37,7 +37,7 @@
         $th_desc = str_replace("<", "&lt;", $th_desc);
         $th_desc = str_replace(">", "&gt;", $th_desc);
         $sno = $_POST['sno'];
-        $sql = "INSERT INTO `thread` ( `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '$sno', current_timestamp())";
+        $sql = "INSERT INTO `threads` ( `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '$sno', current_timestamp())";
         $result = mysqli_query($conn, $sql);
         $showAlert = true;
     }
@@ -89,7 +89,7 @@
         <h1 class="py-2">Browse Questions </h1>
         <?php
         $results_per_page = 5;
-        $sql = "SELECT * FROM `thread` WHERE thread_cat_id=$id";
+        $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
         $result = mysqli_query($conn, $sql);
         $noResult = true;
         $number_of_result = mysqli_num_rows($result);
@@ -106,7 +106,7 @@
         $page_first_result = ($page - 1) * $results_per_page;
 
         // Modify the SQL query to include LIMIT for pagination
-        $sql = "SELECT * FROM `thread` WHERE thread_cat_id=$id LIMIT $page_first_result, $results_per_page";
+        $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id LIMIT $page_first_result, $results_per_page";
         $result = mysqli_query($conn, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -116,7 +116,7 @@
             $id = $row['thread_id'];
             $thread_time = $row['timestamp'];
             $thread_user_id = $row['thread_user_id'];
-            $sql2 = "SELECT user_email FROM `user` WHERE sno='$thread_user_id'";
+            $sql2 = "SELECT user_email FROM `users` WHERE sno=$thread_user_id";
             $result2 = mysqli_query($conn, $sql2);
             $row2 = mysqli_fetch_assoc($result2);
 

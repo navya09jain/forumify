@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cpass = $_POST['signupCpassword'];
 
     //Check whether this email exists
-    $existSql = "SELECT * FROM `user` WHERE user_email='$user_email'";
+    $existSql = "SELECT * FROM `users` WHERE user_email='$user_email'";
     $result = mysqli_query($conn, $existSql);
     $numRows = mysqli_num_rows($result);
     if ($numRows > 0) {
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         if ($pass == $cpass) {
             $hash = password_hash($pass, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `user` ( `user_email`, `user_password`, `timestamp`) VALUES ( '$user_email', '$hash', current_timestamp())";
+            $sql = "INSERT INTO `users` ( `user_email`, `user_pass`, `timestamp`) VALUES ( '$user_email', '$hash', current_timestamp())";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 header("Location: /forum/index.php?signupSuccess=true");
